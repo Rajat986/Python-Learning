@@ -31,8 +31,8 @@ while True:
         continue
     w=win(m,a,b,"x")
     if w==3:
-        print("YAY Player A wins!!!")
         printboard(m)
+        print("YAY Player A wins!!!")
         exit(0)
         
     printboard(m)
@@ -52,8 +52,8 @@ while True:
             continue
         w=win(m,a,b,"o")
         if w==3:
-            print("YAY Player B wins!!!")
             printboard(m)
+            print("YAY Player B wins!!!")
             exit(0)
         printboard(m)
         if z==1:
