@@ -38,7 +38,7 @@ while True:
     printboard(m)
     z=computeContinue(m)
     if z==1:
-        print("Draw")
+        print("Well Played DRAW")
         exit(0)
 
     while True:
