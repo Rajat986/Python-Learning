@@ -1,5 +1,5 @@
 import pdb
-pdb.set_trace()
+pdb.set_trace() 
 m=[["","",""],["","",""],["","",""]]
 
 def checkandsettox(m,a,b,x):
@@ -15,8 +15,7 @@ def checkandsettoo(m,a,b,o):
         m[a][b]=o
 
 def checkwin(m,a,b,x):
-    checkandsettox(m,a,b,x)
-    if m[0][0]==m[0][1]==m[0][2]==x or m[1][0]==m[1][1]==m[1][2]==0 or m[2][0]==m[2][1]==m[2][2]==0 or m[0][0]==m[1][0]==m[2][0]==0 or m[0][1]==m[1][1]==m[1][2]==0 or m[2][0]==m[2][1]==m[2][2]==0 or m[0][0]==m[2][2]==m[1][1]==0 or m[1][2]==m[1][1]==m[2][0]==0:
+    if m[0][0]==m[0][1]==m[0][2]==x or m[1][0]==m[1][1]==m[1][2]==x or m[2][0]==m[2][1]==m[2][2]==x or m[0][0]==m[1][0]==m[2][0]==x or m[0][1]==m[1][1]==m[1][2]==x or m[2][0]==m[2][1]==m[2][2]==x or m[0][0]==m[2][2]==m[1][1]==x or m[1][2]==m[1][1]==m[2][0]==x:
         return 1
 
 def computeContinue(m):
@@ -36,9 +35,10 @@ while True:
     if r==True:
         print("Overlap not allowed!!!")
         continue
-    checkwin(m,a,b,"x")
-    if checkwin(m,a,b,"x")==1:
+    s=checkwin(m,a,b,"x")
+    if s==1:
         print("A wins")
+        break
     printboard(m)
     
     a=int(input("X="))
@@ -50,6 +50,7 @@ while True:
     checkwin(m,a,b,"o")
     if checkwin(m,a,b,"o")==1:
         print("B wins")
+        break
     printboard(m)
     computeContinue(m)
     if computeContinue(m)==0:
