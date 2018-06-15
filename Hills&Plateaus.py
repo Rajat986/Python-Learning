@@ -1,6 +1,7 @@
 class UI:
     def input(self):
         n=int(input("Enter number of instances : "))
+        d=sequences()
         for i in range(n):
             q=sequence()
 
@@ -9,7 +10,11 @@ class UI:
                 e=int(input("Enter %d element : " %(i+1)))
                 
                 q.add_element(e)
-        return q 
+            d.add_sequence(q)
+        return d
+
+    def show(self,d):
+        pass
 
 
 class sequence:
@@ -35,11 +40,10 @@ class sequence:
         
     def find_ascents(self):
         ctr=0
-        for i in range(len(self.ele)-1):
-            if(self.ele[i]<self.ele[i+1]):
+        for i in self.ele:
+            if(self.ele[i] > self.ele[i+1] or self.ele[i]==self.ele[i+1]):
                 ctr=ctr+1
-
-            print("Number of ascents : %d" %ctr)        
+            print("Number of ascents : %d" %ctr)
 
                 
     def find_descents(self):
@@ -48,11 +52,20 @@ class sequence:
     def find_plateaus(self):
         pass
 
-import pdb
-pdb.set_trace()
+class sequences:
+    def __init__(self):
+        self.sequences=[]
+    def add_sequence(self,seq):
+        self.sequences.append(seq)
+        print(self.sequences)
+        
+
+
+        
+
 w=UI()
 b=w.input()
 b.find_ascents()
 b.find_descents()
 b.find_plateaus()
-#UI.show(b)
+UI.show(b)
