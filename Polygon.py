@@ -1,6 +1,6 @@
 class UI:
     def input(self):
-        
+        po=polygon()
         
         p=int(input("Enter number of vertices : "))
         if(p <= 2):
@@ -22,6 +22,9 @@ class UI:
                 w=c_test_points()
                 w.add_test_points(s)
 
+        return po
+
+
 
 
 class vertex_or_point:
@@ -35,7 +38,6 @@ class c_vertices:
         
     def add_vertices(self,ver):
         self.vertices.append(ver)
-        print(ver)
         
 class c_test_points:
     def __init__(self):
