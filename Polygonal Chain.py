@@ -18,7 +18,7 @@ class UI:
 
     def output(self,inp):
         for i in inp.n_poly_chains:
-            t=i.area()
+            t=i.total_area()
             print("Output : %f" %t)
 
 class point:
@@ -33,12 +33,27 @@ class polygonal_chain:
     def add_point(self,point):
         self.poly_chains.append(point)
 
-    def area(self):
+    def total_area(self):
+        u=0
         for i in range(len(self.poly_chains)-1):
-            p1=self.poly_chains[i:i+1]
-            x=p1[i+1].x-p1[i].x
+            p1=self.poly_chains[i]
+            p2=self.poly_chains[i+1]
+            u = u + self.area_tra(p1,p2)
+        return u
+    
+    def area_tra(self,p1,p2):
+        x= p2.x - p1.x
 
-            return(x)
+        if(p1.y > p2.y):
+            h_r= p2.y
+        else:
+            h_r=p1.y    
+
+        h_t= abs(p1.y - p2.y)
+         
+        area=((0.5*x*h_t)+(x*h_r))
+
+        return(area)
                 
 
 class n_polygonal_chain:
