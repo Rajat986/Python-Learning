@@ -1,23 +1,22 @@
 class UI:
-    def input(self):
-        n=int(input("Enter number of sequences : "))
-        q=c_sequences()
-        for j in range(n):
-            m=int(input("Enter number of elements in sequence %d : " %(j+1)))
-            w=c_sequence()
-            for i in range(m):
+    def input_sequence():
+        w=c_sequence()
+        m=int(input("Enter number of elements in sequence %d : " %(j+1)))
+        for i in range(m):
                 ele=int(input("Enter sequence %d element %d : " %((j+1),(i+1))))
-
                 w.add_ele_to_seq(ele)
-            print()
+        return w
+    def input_sequences(self):
+        n=int(input("Enter number of sequences : "))
+        for j in range(n):
+            w=self.input_sequence()
             q.add_seq_to_seqs(w)
         return(q)
 
-    def output(self,inp):
+    def output(self,inp)
         for i in inp.sequences:
-            t=i.result()
-            print("Smallest : %d \nLargest  : %d \nSecond Smallest : %d \nSecond Largest  : %d\n" %t)
-
+            print("Smallest : %d \nLargest  : %d \nSecond Smallest : %d \nSecond Largest  : %d\n" % (i.small,i.large,i.s_small,i.s_large)
+                  
 class c_sequence:
     def __init__(self):
         self.sequence=[]
@@ -40,16 +39,13 @@ class c_sequence:
             #    large=self.sequence[i]
         # We can do the above for Largest and smallest but for 2nd smallest and largest the below is better. Initializing small, large, s_small, s_large is not needed for the below method.
         rem_repeat=set(self.sequence)
-        large=max(rem_repeat)
+        self.large=max(rem_repeat)
         rem_repeat.remove(large)
-        s_large=max(rem_repeat)
+        self.s_large=max(rem_repeat)
 
-        small=min(rem_repeat)
+        self.small=min(rem_repeat)
         rem_repeat.remove(small)
-        s_small=min(rem_repeat)
-
-        
-            
+        self.s_small=min(rem_repeat)   
         return(small, large, s_small, s_large)
 
 class c_sequences:
@@ -58,9 +54,16 @@ class c_sequences:
 
     def add_seq_to_seqs(self,seq):
         self.sequences.append(seq)
+    def compute(self):
+        for i in self.sequences:
+            result = i.result()
+    
         
 
 
 a=UI()
 b=a.input()
-a.output(b)
+c = b.compute()
+#or
+#b.compute()
+#a.output(b)
